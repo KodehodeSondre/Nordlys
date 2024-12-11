@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: relative;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    height: 50px;
+    background-color: #5ec59b;;
+    width: 100%;
+}
+.fontlogo {
+    text-align: center;
+}
+
+.background-image {
+    background-image: url('./img/cover-image.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+main {
+    background-color: #5ec59b;
+    padding: 2rem 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.search-bar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 50%;
+    border-radius: 25px;
+    border: none;
+}
+
+.weather {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-size: 1rem;
+}
+
+.city {
+    width: 45%;
+    background-color: white;
+    border-radius: 21px;
+}
+
+.city-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.weather-times {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.tonight {
+    font-size: 1.2rem;
+}
+
+.tonight span {
+    margin-right: 10px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+}

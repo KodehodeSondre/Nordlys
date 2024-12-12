@@ -30,7 +30,11 @@ footer.className = "footer";
 maincontainer.appendChild(footer);
 
 const searchbar = document.createElement("div");
+const searchinput = document.createElement("input");
 searchbar.className = "searchbar";
+searchinput.className = "searchinput";
+searchinput.placeholder = "Search location";
+searchbar.appendChild(searchinput);
 maincontent.appendChild(searchbar);
 
 const maincontent2 = document.createElement("div");
@@ -38,13 +42,21 @@ maincontent2.className = "maincontent2";
 maincontent.appendChild(maincontent2);
 
 const maincontent2items = ["box1","box2", "box3", "box4"];
+
 maincontent2items.forEach(item => {
     const box = document.createElement('div');
     box.className = "box";
-    // box.textContent = item;
     box.id = item;
+    const boxHeader = document.createElement('div');
+    boxHeader.className = "box-header";
+    // boxHeader.textContent = item;
+    const headerp = document.createElement('p');
+    headerp.textContent = item;
+    boxHeader.appendChild(headerp)
+    box.appendChild(boxHeader)
     maincontent2.appendChild(box);
 });
+
 
 const box1items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7"];
 const box1 = document.getElementById("box1");

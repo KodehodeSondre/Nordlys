@@ -36,9 +36,19 @@ body {
     width: 100%;
     background-color: rgb(0, 0, 0);
 }
-.searchbar {
+.buttoncontainer{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 300px;
+    height: 20px;
+    margin-top: -30px;
+}
+.button{
+    background-color: none;
+    border-radius: 30px;
+}
+.searchbar {
     height: 70px;
     width: 300px;
     justify-content: center;

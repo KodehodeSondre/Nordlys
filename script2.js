@@ -29,10 +29,26 @@ footer.className = "footer";
 maincontainer.appendChild(footer);
 
 const searchbar = document.createElement("div");
+const buttoncontainer = document.createElement("div");
 const searchinput = document.createElement("input");
+const button1 = document.createElement('button');
+const button2 = document.createElement('button');
+const button3 = document.createElement('button');
+buttoncontainer.className = "buttoncontainer";
+button1.className = "button";
+button1.textContent = "from A to Z";
+button2.className = "button";
+button2.textContent = "From 1 to 30";
+button3.className = "button";
+button3.textContent = "From one to two"
 searchbar.className = "searchbar";
 searchinput.className = "searchinput";
 searchinput.placeholder = "Search location";
+
+searchbar.appendChild(buttoncontainer)
+buttoncontainer.appendChild(button1);
+buttoncontainer.appendChild(button2);
+buttoncontainer.appendChild(button3);
 searchbar.appendChild(searchinput);
 maincontent.appendChild(searchbar);
 

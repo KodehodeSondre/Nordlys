@@ -17,7 +17,6 @@ video.className = "backgroundvideo";
 video.autoplay = true;
 video.loop = true;
 video.muted = true;
-// video.innerHTML = 'src="/img/121878-724720103_small.mp4" type="video/mp4">';
 
 const source = document.createElement('source')
 source.src = "/img/121878-724720103_small.mp4"; 
@@ -60,7 +59,7 @@ maincontent2items.forEach((item,index) => {
 });
 
 
-const box1items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7"];
+const box1items = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const itemcontainer1 = document.getElementById("itemcontainer1");
 box1items.forEach(item => {
     const box1item = document.createElement('div');
@@ -78,7 +77,7 @@ box2items.forEach(item => {
     itemcontainer2.appendChild(box2item);
 });
 
-const box3items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7"];
+const box3items = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const itemcontainer3 = document.getElementById("itemcontainer3")
 box3items.forEach(item => {
     const box3item = document.createElement('div');
@@ -95,6 +94,3 @@ box4items.forEach(item => {
     box4item.textContent = item;
     item4container.appendChild(box4item);
 });
-
-
-

@@ -41,57 +41,59 @@ const maincontent2 = document.createElement("div");
 maincontent2.className = "maincontent2";
 maincontent.appendChild(maincontent2);
 
-const maincontent2items = ["box1","box2", "box3", "box4"];
+const maincontent2items = ["Volda","Tonight", "Oslo", "Tonight"];
 
-maincontent2items.forEach(item => {
+maincontent2items.forEach((item,index) => {
     const box = document.createElement('div');
     box.className = "box";
-    box.id = item;
+    box.id = `box${index + 1}`;
+
     const boxHeader = document.createElement('div');
     boxHeader.className = "box-header";
-    // boxHeader.textContent = item;
-    const headerp = document.createElement('p');
-    headerp.textContent = item;
-    boxHeader.appendChild(headerp)
-    box.appendChild(boxHeader)
+    boxHeader.textContent = item;
+    const itemcontainer = document.createElement('div');
+    itemcontainer.className = "itemcontainer";
+    itemcontainer.id = `itemcontainer${index + 1}`;
+    box.appendChild(boxHeader);
+    box.appendChild(itemcontainer);
     maincontent2.appendChild(box);
 });
 
 
 const box1items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7"];
-const box1 = document.getElementById("box1");
+const itemcontainer1 = document.getElementById("itemcontainer1");
 box1items.forEach(item => {
     const box1item = document.createElement('div');
     box1item.className = "item";
     box1item.textContent = item;
-    box1.appendChild(box1item);
+    itemcontainer1.appendChild(box1item);
 });
 
 const box2items = ["item1", "item2", "item3", "item4"];
-const box2 = document.getElementById("box2");
+const itemcontainer2 = document.getElementById("itemcontainer2");
 box2items.forEach(item => {
     const box2item = document.createElement('div');
     box2item.className = "item";
     box2item.textContent = item;
-    box2.appendChild(box2item);
+    itemcontainer2.appendChild(box2item);
 });
 
 const box3items = ["item1", "item2", "item3", "item4", "item5", "item6", "item7"];
-const box3 = document.getElementById("box3")
+const itemcontainer3 = document.getElementById("itemcontainer3")
 box3items.forEach(item => {
     const box3item = document.createElement('div');
     box3item.className = "item";
     box3item.textContent = item;
-    box3.appendChild(box3item);
+    itemcontainer3.appendChild(box3item);
 });
 
 const box4items = ["item1", "item2", "item3", "item4"];
-const box4 = document.getElementById("box4");
+const item4container = document.getElementById("itemcontainer4");
 box4items.forEach(item => {
     const box4item = document.createElement('div');
     box4item.className = "item";
     box4item.textContent = item;
-    box4.appendChild(box4item);
+    item4container.appendChild(box4item);
 });
 
 

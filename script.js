@@ -23,13 +23,23 @@ fetch(locationurl)
       const nameElement = document.createElement('h3');
       nameElement.className = 'locationfont';
       nameElement.textContent = `${location.name}`; 
+
+      const sevenDayElement = document.createElement('h2');
+      sevenDayElement.className = 'locationtext1';
+      sevenDayElement.textContent = `Last Seven Days`; 
+
+      const threeDayElement = document.createElement('h2');
+      threeDayElement.className = 'locationtext2';
+      threeDayElement.textContent = `Three Day Average`; 
   
       //const latElement = document.createElement('p');
       //latElement.textContent = `Latitude: ${location.lat || "N/A"}`; 
   
       //const longElement = document.createElement('p');
       //longElement.textContent = `Longitude: ${location.long || "N/A"}`; 
-  
+      
+      locationDiv.appendChild(sevenDayElement);
+      locationDiv.appendChild(threeDayElement);
       locationDiv.appendChild(nameElement);
       //locationDiv.appendChild(latElement);
       //locationDiv.appendChild(longElement);

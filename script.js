@@ -3,7 +3,6 @@ let locationurl = `https://api.auroras.live/v1/?type=locations&tz=-60`;
 fetch(locationurl)
   .then(response => response.json())
   .then((data) => {
-    console.log(data); 
     if (typeof data === 'object') {
     createLocationDivs(Object.values(data));
       }
@@ -17,12 +16,13 @@ fetch(locationurl)
     const container = document.getElementById('location-container');
   
     locations.forEach((location, index) => {
+        if (location.name !== undefined) {
       const locationDiv = document.createElement('div');
       locationDiv.classList.add('location');
-  
-  
+
       const nameElement = document.createElement('h3');
-      nameElement.textContent = `${location.name || "N/A"}`; 
+      nameElement.className = 'locationfont';
+      nameElement.textContent = `${location.name}`; 
   
       //const latElement = document.createElement('p');
       //latElement.textContent = `Latitude: ${location.lat || "N/A"}`; 
@@ -35,17 +35,16 @@ fetch(locationurl)
       //locationDiv.appendChild(longElement);
   
       container.appendChild(locationDiv);
-      console.log(location.lat, location.long);
       fetchLocationStory(location.lat, location.long, locationDiv);
+      createLocationData(location.lat, location.long, locationDiv);
+      }
     });
   }
   
   function fetchLocationStory(locationlat, locationlong, parentDiv) {
-    console.log(locationlat, locationlong);
     fetch(`https://api.auroras.live/v1/?type=all&lat=${locationlat}&long=${locationlong}&forecast=false&threeday=true`)
       .then(response => response.json())
       .then((data) => {
-        console.log(data.threeday.values);
         createAverageColorDivs(data.threeday.values, parentDiv);
         createMiddlePart(parentDiv);
       })
@@ -58,8 +57,20 @@ fetch(locationurl)
     parentDiv.appendChild(container); 
   }
 
+  function createLocationData(locationlat, locationlong, parentDiv) {
+    fetch(`https://api.auroras.live/v1/?type=all&lat=${locationlat}&long=${locationlong}&forecast=false&twentysevenday=true`)
+      .then(response => response.json())
+      .then((data) => {
+        const reducedDays = data.twentysevenday.values.slice(4, 11);
+        createForecastColorDivs(reducedDays, parentDiv);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+  
+  //First Three
   function createAverageColorDivs(colorData, parentDiv) {
     const container = document.createElement('div'); 
+    container.className = 'firstthree'; 
     container.style.display = 'flex'; 
     container.style.flexWrap = 'wrap'; 
     container.style.gap = '10px'; 
@@ -68,20 +79,20 @@ fetch(locationurl)
       let totalValue = 0;
       let colorFrequency = {}; 
       let count = innerArray.length;
-  
-      innerArray.forEach(item => {
-        let value = parseFloat(item["value"]);
+      
+      for (let obj in innerArray) {
+        let value = parseFloat(innerArray[obj].value);
         if (!isNaN(value)) {
           totalValue += value;
         }
-        const color = String(item["colour"]); 
+        const color = String(innerArray[obj].colour); 
         if (colorFrequency[color]) {
           colorFrequency[color]++;
-          console.log(color);
         } else {
           colorFrequency[color] = 1;
         }
-      });
+    
+      };
   
       let avgValue = Math.round(totalValue / count);
   
@@ -97,3 +108,44 @@ fetch(locationurl)
   
     parentDiv.appendChild(container); 
   }
+  // Last Seven 
+  function createForecastColorDivs(reducedDays, parentDiv) {
+    const forecastContainer = document.createElement('div'); 
+    forecastContainer.className = 'lastseven'
+    forecastContainer.style.display = 'flex'; 
+    forecastContainer.style.flexWrap = 'wrap'; 
+    forecastContainer.style.gap = '10px'; 
+   
+    reducedDays.forEach(value => {
+        const forecastColorDiv = document.createElement('div');
+        if (value.colour === "green") {
+            forecastColorDiv.style.backgroundColor = "green";
+        } else if (value.colour === "yellow") {
+            forecastColorDiv.style.backgroundColor = "yellow";
+        } else if (value.colour === "red") {
+            forecastColorDiv.style.backgroundColor = "red";
+        }  
+        forecastColorDiv.className = 'square';
+        forecastColorDiv.textContent = value.value;
+  
+        forecastContainer.appendChild(forecastColorDiv);
+    });
+  
+    parentDiv.appendChild(forecastContainer); 
+  }
+
+  // SEARCH BOX
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener("input", (event) => { 
+        const locations = document.querySelectorAll('.location');
+        const filter = event.target.value.toLowerCase();
+        locations.forEach(location => {
+
+            const locationName = location.querySelector('h3').textContent.toLowerCase();
+            if (locationName.includes(filter)) {
+                location.classList.remove('hidden');
+            } else {
+                location.classList.add('hidden');
+            }
+        });
+    });

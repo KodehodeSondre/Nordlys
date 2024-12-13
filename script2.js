@@ -137,32 +137,3 @@ fetch(url3)
   console.log(data);
 })
 .catch(error => console.error(error));
-
-
-
-// const itemcontainer3 = document.getElementById("itemcontainer3");
-// const apiKey = 
-// const apiUrl = `https://api.auroras.live/v1/?type=all&lat=62.1482&long=6.0516&forecast=true&apiKey=${apiKey}`;
-
-// async function fetchAuroraData() {
-//     try {
-//         const response = await fetch(apiUrl);
-//         if (!response.ok) throw new Error("Failed to fetch aurora data");
-
-//         const data = await response.json();
-//         const auroraProbability = data.forecast.probability; // Example path
-
-//         const auroraItem = document.createElement("div");
-//         auroraItem.className = "item";
-//         auroraItem.textContent = `Aurora Probability in Volda: ${auroraProbability}%`;
-//         itemcontainer3.appendChild(auroraItem);
-//     } catch (error) {
-//         console.error("Error fetching aurora data:", error);
-//         const errorItem = document.createElement("div");
-//         errorItem.className = "item";
-//         errorItem.textContent = "Failed to load aurora data.";
-//         itemcontainer3.appendChild(errorItem);
-//     }
-// }
-
-// fetchAuroraData();

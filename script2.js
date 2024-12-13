@@ -38,14 +38,14 @@ buttoncontainer.className = "buttoncontainer";
 button1.className = "button";
 button1.textContent = "from A to Z";
 button2.className = "button";
-button2.textContent = "From 1 to 30";
+button2.textContent = "Your text here"; // put shorter thing here
 button3.className = "button";
-button3.textContent = "From one to two"
+button3.textContent = "Your text here"; // put shoter thing here
 searchbar.className = "searchbar";
 searchinput.className = "searchinput";
 searchinput.placeholder = "Search location";
 
-searchbar.appendChild(buttoncontainer)
+maincontent.appendChild(buttoncontainer)
 buttoncontainer.appendChild(button1);
 buttoncontainer.appendChild(button2);
 buttoncontainer.appendChild(button3);
@@ -110,3 +110,59 @@ box4items.forEach(item => {
     box4item.textContent = item;
     item4container.appendChild(box4item);
 });
+
+let url1 = 'https://api.auroras.live/v1/?type=all&lat=62.197089&long=6.126711&forecast=false&threeday=true';
+
+let url2 = 'https://api.auroras.live/v1/?type=locations&tz=-60';
+
+let url3 = 'https://api.auroras.live/v1/?type=ace&data=all&lat=62.197089&long=6.126711&tz=-60';
+
+fetch(url1)
+.then(response => response.json())
+.then((data) => { 
+  console.log(data);
+})
+.catch(error => console.error(error));
+
+fetch(url2)
+.then(response => response.json())
+.then((data) => { 
+  console.log(data);
+})
+.catch(error => console.error(error));
+
+fetch(url3)
+.then(response => response.json())
+.then((data) => { 
+  console.log(data);
+})
+.catch(error => console.error(error));
+
+
+
+// const itemcontainer3 = document.getElementById("itemcontainer3");
+// const apiKey = 
+// const apiUrl = `https://api.auroras.live/v1/?type=all&lat=62.1482&long=6.0516&forecast=true&apiKey=${apiKey}`;
+
+// async function fetchAuroraData() {
+//     try {
+//         const response = await fetch(apiUrl);
+//         if (!response.ok) throw new Error("Failed to fetch aurora data");
+
+//         const data = await response.json();
+//         const auroraProbability = data.forecast.probability; // Example path
+
+//         const auroraItem = document.createElement("div");
+//         auroraItem.className = "item";
+//         auroraItem.textContent = `Aurora Probability in Volda: ${auroraProbability}%`;
+//         itemcontainer3.appendChild(auroraItem);
+//     } catch (error) {
+//         console.error("Error fetching aurora data:", error);
+//         const errorItem = document.createElement("div");
+//         errorItem.className = "item";
+//         errorItem.textContent = "Failed to load aurora data.";
+//         itemcontainer3.appendChild(errorItem);
+//     }
+// }
+
+// fetchAuroraData();

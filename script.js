@@ -26,23 +26,15 @@ fetch(locationurl)
 
       const sevenDayElement = document.createElement('h2');
       sevenDayElement.className = 'locationtext1';
-      sevenDayElement.textContent = `Last Seven Days`; 
+      sevenDayElement.textContent = `Seven Day Forecast`; 
 
       const threeDayElement = document.createElement('h2');
       threeDayElement.className = 'locationtext2';
-      threeDayElement.textContent = `Three Day Average`; 
-  
-      //const latElement = document.createElement('p');
-      //latElement.textContent = `Latitude: ${location.lat || "N/A"}`; 
-  
-      //const longElement = document.createElement('p');
-      //longElement.textContent = `Longitude: ${location.long || "N/A"}`; 
+      threeDayElement.textContent = `Three Day Average`;  
       
       locationDiv.appendChild(sevenDayElement);
       locationDiv.appendChild(threeDayElement);
       locationDiv.appendChild(nameElement);
-      //locationDiv.appendChild(latElement);
-      //locationDiv.appendChild(longElement);
   
       container.appendChild(locationDiv);
       fetchLocationStory(location.lat, location.long, locationDiv);
@@ -109,7 +101,14 @@ fetch(locationurl)
       let avgColor = Object.keys(colorFrequency).reduce((a, b) => colorFrequency[a] > colorFrequency[b] ? a : b);
   
       const colorDiv = document.createElement('div');
-      colorDiv.style.backgroundColor = avgColor;
+      if (avgColor === "green"){
+          colorDiv.style.backgroundColor = "#51ff45";
+      } else if (avgColor === "yellow") {
+          colorDiv.style.backgroundColor = "#ffff3b";
+      } else if (avgColor === "red"){
+          colorDiv.style.backgroundColor = "#fc3f3f";
+
+      }
       colorDiv.className = 'square';
       colorDiv.textContent = avgValue;
   
@@ -129,11 +128,11 @@ fetch(locationurl)
     reducedDays.forEach(value => {
         const forecastColorDiv = document.createElement('div');
         if (value.colour === "green") {
-            forecastColorDiv.style.backgroundColor = "green";
+            forecastColorDiv.style.backgroundColor = "#51ff45";
         } else if (value.colour === "yellow") {
-            forecastColorDiv.style.backgroundColor = "yellow";
+            forecastColorDiv.style.backgroundColor = "#ffff3b";
         } else if (value.colour === "red") {
-            forecastColorDiv.style.backgroundColor = "red";
+            forecastColorDiv.style.backgroundColor = "#fc3f3f";
         }  
         forecastColorDiv.className = 'square';
         forecastColorDiv.textContent = value.value;
